@@ -1,19 +1,20 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import{ProductListComponent} from './productList.componenet';
-import { ProductComponent } from './product/product.component';
-import { ProductDetailComponent } from './productDetail.component';
+// import{ProductListComponent} from './productList.componenet';
+import { ProductListComponent } from './product/productList.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent, ProductListComponent, ProductComponent, ProductDetailComponent
+    AppComponent, ProductListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

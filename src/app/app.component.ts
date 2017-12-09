@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
     <div style="text-align:center ; border: solid red 2px; padding: 6px 30px 6px 6px; margin: 0px 440px 0px 440px">
       <h1 class="title">
-        Welcome to {{title | uppercase}}!
+        Welcome to {{title}}!
        
       </h1>
-      <productList-component></productList-component>
+      <app-product-list></app-product-list>
       </div>
     
     
@@ -17,5 +17,5 @@ import { Component, Input } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'App Store!';
+  title = "App Store!";
 }
