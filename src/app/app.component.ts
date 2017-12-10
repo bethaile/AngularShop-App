@@ -4,7 +4,7 @@ import { Component, Input } from "@angular/core";
   selector: "app-root",
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center ; border: solid red 2px; padding: 6px 30px 6px 6px; margin: 0px 440px 0px 440px">
+    <div>
       <h1 class="title">
         Welcome to {{title}}!
        
