@@ -4,7 +4,6 @@ import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-product-list",
-  inputs: ['product'],
   template: `
 
 
@@ -17,7 +16,8 @@ import { Component, OnInit, Input } from "@angular/core";
          </li>   
       </ul> 
 
-      <product-detail [product] = "selectedProduct">
+      <product-detail [product] = "selectedProduct"
+      (deleteProduct)="delete($event)">
       </product-detail>
 
     `,
@@ -32,6 +32,10 @@ export class ProductListComponent implements OnInit {
 
   onSelect(product: Product): void {
     this.selectedProduct = product;
+  }
+
+  delete(product: Product){
+    this.products = this.products.filter(item => item !== product);
   }
 
   ngOnInit() {}

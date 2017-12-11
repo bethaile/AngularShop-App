@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group"> 
+        <label for="form-group">Product Name</label>
+        <input ngModel name="product_name" #productName ="ngModel" (change)= "log(productName)"
+            id="product_name" type="text" class="form-control">
+
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea ngModel name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
