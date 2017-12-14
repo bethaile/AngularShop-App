@@ -10,7 +10,8 @@ import { Component, Input } from "@angular/core";
        
       </h1>
       <app-product-list></app-product-list>
-      <app-product-form></app-product-form>
+      <hr>
+      <!-- <app-product-form></app-product-form>-->
       </div>
     
     

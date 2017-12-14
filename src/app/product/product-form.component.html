@@ -1,0 +1,73 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Add Product</h1>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <!-- {{diagnostic}} -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required
+        minlength="4"   pattern="PR.*"
+        [(ngModel)]="model.name" name="name" #spy #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+          <div *ngIf='name.errors.required'>
+            Name is required.
+          </div>
+          <div *ngIf='name.errors.minlength'>
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="name.errors.pattern">
+            Name should start with PR.
+          </div>
+
+        </div>
+        {{model.name}}
+
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" [(ngModel)]="model.price" name="price"> {{model.price}}
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description"> {{model.description}}
+      </div>
+
+      <div class="form-group">
+        <label for="power">Brand</label>
+        <select class="form-control" id="brand" required [(ngModel)]="model.brand" name="brand">
+          <option *ngFor="let br of brands" [value]="br">{{br}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Submit</button>
+
+      <button type="button" class="btn btn-default" (click)="newProduct(); productForm.reset()">New Product</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Price</div>
+      <div class="col-xs-9 pull-left">{{ model.price }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Description</div>
+      <div class="col-xs-9 pull-left">{{ model.description }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Brand</div>
+      <div class="col-xs-9 pull-left">{{ model.brand }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>

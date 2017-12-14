@@ -1,8 +1,8 @@
 import { Product } from "./product";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { PRODUCTS } from "./products";
-import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { ProductService } from './product.service';
 
 @Component({
   selector: "product-detail",
@@ -10,24 +10,27 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
   template: `
 
 
-  <div *ngIf="product">
-   <h2>{{ product.name}} Details</h2>
+  <div myHighlight *ngIf="product">
+
+   <p>{{ product.name}} Details</p>
    <span>id: </span>{{product.id}}
         <span>price: </span>{{product.price}}
         <span>description: </span>{{product.description}}
   
-        <button (click)="requestDelete()">delete</button>
+        <button (click)="requestDelete()">Delete</button>
+        <button (click)="addToCart(product)">Add to Cart</button>
  </div>`,
 
   styles: ["./product.component.css"]
 })
 export class ProductDetailComponent implements OnInit {
-  products = PRODUCTS;
+  products: Product[];
 
   @Input() product: Product;
 
   @Output() deleteProduct= new EventEmitter<Product>();
-  constructor() {}
+  @Output() addCart= new EventEmitter<Product>();
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {}
 
@@ -38,4 +41,9 @@ export class ProductDetailComponent implements OnInit {
   requestDelete(): void {
     this.deleteProduct.emit(this.product);
   }
+ 
+  addToCart(product: Product): void {
+    this.addCart.emit(this.product);
+  }
+
 }

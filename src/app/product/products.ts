@@ -1,24 +1,7 @@
 import { Product } from "./product";
 
 export const PRODUCTS: Product[] = [
-  {
-    id: 1,
-    name: "iPhone",
-    price: 600,
-    description: "iPhone X"
-  },
-
-  {
-    id: 2,
-    name: "iPad",
-    price: 800,
-    description: "iPad S7"
-  },
-
-  {
-    id: 3,
-    name: "Apple TV",
-    price: 1000,
-    description: "Smart TV"
-  }
+  new Product(1, "Galaxy", 'S7', 600, 'Silky and smart'), 
+  new Product(2, "iPhone", 'S9', 500, 'Expensive'),
+  new Product(3, "HP", 'PAvalion', 1500, 'Expensive and nice'),  
 ];
